@@ -1,0 +1,27 @@
+Person:
+  $base: EntityBase
+  Name: String
+  Count: UInt
+  BirthDate: Date
+  Pets: Animal[]
+
+Animal:
+  $base: EntityBase
+  Name:
+    type: String
+    required: true
+    minLength: 1
+  Owner: Person?
+
+EntityBase:
+  $type: abstract
+  Id: Guid
+  Created: AtBy
+  Updated: AtBy?
+  Deleted: AtBy?
+  Version: UInt
+
+AtBy:
+  $type: complex
+  At: DateTime
+  By: Person
